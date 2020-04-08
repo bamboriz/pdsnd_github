@@ -8,7 +8,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 def get_filters():
     """
-    Asks user to specify a city, month, and day to analyze.
+    Asks the user to specify a city, month, and day to analyze.
 
     Returns:
         (str) city - name of the city to analyze
@@ -25,7 +25,7 @@ def get_filters():
 
     while True:
         try:
-            # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+            # get user input for city (chicago, new york city, washington).
             city = input('Would you like to see data for Chicago, New York, or Washington? : ')
 
             filt = input('Would you like to filter the data by month, day, or not at all? Type "none" for no filter : ')
