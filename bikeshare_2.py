@@ -19,7 +19,7 @@ def get_filters():
 
     month = 'all'
     day = 'all'
-    
+
     cities = ['chicago', 'new york city', 'washington']
     months = ['january', 'february', 'march', 'april', 'may', 'june']
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -55,7 +55,7 @@ def get_filters():
             print('-'*40)
             break
         else:
-            print('Invalid input, please let\'s start again !\n') 
+            print('Invalid input, please let\'s start again !\n')
     return city, month, day
 
 
@@ -124,10 +124,10 @@ def station_stats(df):
     start_time = time.time()
 
     # display most commonly used start station
-    print('Most used start station: ', df['Start Station'].mode()[0])
+    print('Most used Start Station: ', df['Start Station'].mode()[0])
 
     # display most commonly used end station
-    print('Most used end station: ', df['End Station'].mode()[0])
+    print('Most used End Station: ', df['End Station'].mode()[0])
 
     # display most frequent combination of start station and end station trip
     st_end = df['Start Station'] + '|' + df['End Station']
@@ -181,6 +181,9 @@ def user_stats(df, city):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def continue_prompt():
+    raw = input('\nWould you like to see raw data? Enter yes or no.\n')
+    return raw.title()
 
 def main():
     while True:
@@ -191,15 +194,15 @@ def main():
         trip_duration_stats(df)
         user_stats(df, city)
 
-        raw = input('\nWould you like to see raw data? Enter yes or no.\n')
-        if raw.lower() != 'yes':
+        raw = continue_prompt()
+        if raw != 'yes':
             break
         else:
             count = 5
-            while raw.lower() == 'yes':
+            while raw == 'yes':
                 print(df.head(count).tail())
                 count += 5
-                raw = input('\nWould you like to see raw data? Enter yes or no.\n') 
+                raw = continue_prompt()
                
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
